@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../jquery-3.2.1.min.js"></script>
+    <script src="sum.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="num1" />
+<input type="text" id="num2" />
+<input type="text" id="result" readonly />
+<br>
+<button id="sumButton">
+    Sum</button>
+<button id="subtractButton">
+    Subtract</button>
+
+<script>
+    $(function () {
+        let module = getModule();
+        $('sumButton').click(module.add());
+        $('subtractButton').click(module.subtract());
+    });
+</script>
+</body>
+</html>
