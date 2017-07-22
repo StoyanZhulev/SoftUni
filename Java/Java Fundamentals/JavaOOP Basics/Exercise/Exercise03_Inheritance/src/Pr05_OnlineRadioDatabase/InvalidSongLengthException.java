@@ -1,0 +1,15 @@
+package Pr05_OnlineRadioDatabase;
+
+public class InvalidSongLengthException extends InvalidSongException{
+    public InvalidSongLengthException(){
+        super("Invalid song length.");
+    }
+
+    public InvalidSongLengthException(String message){
+        super(message);
+    }
+
+    public String getMessage(){
+        return super.message;
+    }
+}
