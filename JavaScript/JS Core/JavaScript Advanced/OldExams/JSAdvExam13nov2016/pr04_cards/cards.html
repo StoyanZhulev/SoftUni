@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cards</title>
+    <style>
+        div.card {
+            display: inline-block; padding: 10px; margin: 10px;
+            width: 50px; height: 80px; background: #EEE;
+            border: 3px solid #DDD; border-radius: 5px;
+            font-size: 18pt; text-align: center; line-height: 75px;
+        }
+    </style>
+    <script src="../jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<div id="main"></div>
+<script>
+    function cardDeckBuilder(selector) {
+        function makeCard(face, suit) {
+            const validFaces = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+            const validSuits = ['S', 'H', 'D', 'C'];
+
+            if (!validFaces.includes(face)) {
+                throw new Error('Invalid face');
+            }
+            if (!validSuits.includes(suit)) {
+                throw new Error('Invalid suit');
+            }
+
+            let card = {
+                face: face,
+                suit: suit,
+                toString: function () {
+                    let cardSuit = {
+                        S: '\u2660',
+                        H: '\u2665',
+                        D: '\u2666',
+                        C: '\u2663'
+                    };
+
+                    return this.face + cardSuit[this.suit];
+                }
+            };
+
+            return card;
+        }
+
+         function addCard(face, suit) {
+            let card = makeCard(face, suit);
+            let cardDiv = $('<div>').addClass('card').text(card.toString());
+            $(cardDiv).click(reverseOrder);
+            $(selector).append(cardDiv);
+        }
+
+        function reverseOrder(){
+            let cards = $(selector).find('div.card').toArray();
+            cards.reverse();
+            $(selector).find('div.card').remove();
+
+            for (let card of cards) {
+                $(selector).append($(card).click(reverseOrder));
+            }
+
+        }
+
+        return {addCard};
+    }
+</script>
+<script>
+    $(function() {
+        let builder = cardDeckBuilder("#main");
+        builder.addCard("10", "D");
+        builder.addCard("K", "S");
+        builder.addCard("Q", "H");
+        builder.addCard("4", "C");
+    });
+</script>
+</body>
+</html>
