@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phonebook</title>
+    <script src="../jquery-3.2.1.min.js"></script>
+    <style>
+        label{
+            display: inline-block;
+            width: 3.5em;
+        }
+        #notification{
+            float: right;
+            color: #ffffff;
+            padding: 0.5em 2em 0.5em 2em;
+            margin: 1em;
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+         }
+        #phonebook span {
+            display: inline-block;
+            width: 12em;
+        }
+    </style>
+</head>
+<body>
+<h1>Phonebook</h1>
+<ul id="phonebook"></ul>
+<button id="btnLoad">Load</button>
+<h2>Create Contact</h2>
+<div id="create">
+    <label for="person">Name: </label><input id="person" type="text"><br>
+    <label for="phone">Phone: </label><input id="phone" type="text">
+</div>
+<button id="btnCreate">Create new contact</button>
+<div id="notification"></div>
+<script src="phonebook.js"></script>
+</body>
+</html>
