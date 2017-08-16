@@ -1,0 +1,19 @@
+<div class="ad-box">
+    <div class="ad-title">{{title}}
+    {{#if isCreator}}
+        <a href="#/ads/delete/:{{_id}}" ><button class="ad-control deleteAd">✘</button></a>
+        <a href="#/ads/edit/:{{_id}}" ><button class="ad-control editAd" >✎</button></a>
+    {{/if}}
+        <a href="#/ads/:{{_id}}" ><button class="ad-control readMore">☰</button></a>
+
+    </div>
+    <div>
+        {{#if imageUrl}}
+            <img src="{{imageUrl}}">
+        {{else}}
+            <img src="././styles/static/no-image.jpg">
+        {{/if}}
+    </div>
+    <div class="ad-title">Price: {{price}}</div>
+    <div class="ad-title">Publisher: {{publisher}}</div>
+</div>

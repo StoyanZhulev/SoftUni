@@ -1,0 +1,13 @@
+<header id="menu" class="menu">
+    <a href="#/home" class="menu-item">Home</a>
+    {{#if loggedIn}}
+    <a href="#/ads"  class="menu-item">List Advertisements</a>
+    <a href="#/createAd" class="menu-item">Create Advertisement</a>
+    <a href="#/logout" class="menu-item">Logout</a>
+    <a href="#/profile/:{{id}}" class="menu-item">WELCOME, {{username}}</a>
+    {{else}}
+        <a href="#/login" class="menu-item">Login</a>
+        <a href="#/register" class="menu-item">Register</a>
+    {{/if}}
+    <div></div>
+</header>

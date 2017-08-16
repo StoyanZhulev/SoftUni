@@ -1,0 +1,33 @@
+{{> header}}
+<h1 class="titleForm">Profile</h1>
+<div id="profile" class="ads">
+    <div class="htm"><p class="text">User Info: </p><br>
+        <p class="infoText">Username: <i><strong>{{username}}</strong></i></p>
+        <input type="prButton" value="Show ads ⬎" id="showAdsBtn" onclick="showAds()">
+        <input type="prButton" value="Hide ads ⬏" id="hideAdsBtn" style="display: none;" onclick="hideAds()">
+    </div>
+</div>
+<div id="adverts" class="ads" style="display: none">
+    {{#each ads}}
+        {{> adBox}}
+    {{else}}
+        <div>
+            <p><i>No ads from this user!</i></p>
+        </div>
+    {{/each}}
+</div>
+<script>
+    function showAds() {
+        $('#showAdsBtn').hide();
+        $('#hideAdsBtn').show();
+        $('#adverts').show();
+    }
+
+    function hideAds() {
+        $('#showAdsBtn').show();
+        $('#hideAdsBtn').hide();
+        $('#adverts').hide();
+
+    }
+</script>
+{{> footer}}

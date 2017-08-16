@@ -1,0 +1,45 @@
+{{> header}}
+<div id="detailAd" class="ads">
+    <div class="htm" style="border: 1px solid black"><h1 class="titleForm">{{title}}</h1>
+        <div class="htm">
+            {{#if imageUrl}}
+                <img src="{{imageUrl}}" style="float: left">
+            {{else}}
+                <img src="././styles/static/no-image.jpg" style="float: left">
+            {{/if}}
+        </div>
+        <div class="htm"><p class="text">Description: </p><textarea class="textarea" disabled="" >{{description}}</textarea></div>
+        <div class="htm"><p class="text">Ad Info: </p><br>
+            <p class="infoText">Publisher: <a href="#/profile/:{{creator}}" style="color: #333333"><i><strong>{{publisher}}</strong></i></a></p>
+            <p class="infoText">Date published: {{datePublished}}</p></div>
+    </div>
+</div>
+<div id="viewUserAds" class="htm">
+    <p class="text">View all ads from this user:</p>
+    <input type="prButton" value="Show ads ⬎" id="btnShowAds" onclick="showAds()">
+    <input type="prButton" value="Hide ads ⬏" id="btnHideAds" style="display: none;" onclick="hideAds()">
+</div>
+<div id="userAdverts" class="ads" style="display: none;">
+    {{#each ads}}
+        {{> adBox}}
+    {{else}}
+        <div>
+            <p><i>No ads from this user!</i></p>
+        </div>
+    {{/each}}
+</div>
+<script>
+    function showAds() {
+        $('#btnShowAds').hide();
+        $('#btnHideAds').show();
+       $('#userAdverts').show();
+    }
+
+    function hideAds() {
+       $('#btnShowAds').show();
+       $('#btnHideAds').hide();
+       $('#userAdverts').hide();
+
+    }
+</script>
+{{> footer}}
