@@ -1,0 +1,11 @@
+{
+  "name": "storage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "storage.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "MIT"
+}
