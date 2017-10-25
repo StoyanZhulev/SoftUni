@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doner Place</title>
+    <link href="static/css/site.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <main>
+            <h1>Order details</h1>
+            <div class="catalog">
+                <div class="column">
+                    <img src="{{order.product.imageUrl}}">
+                </div>
+                <div class="column">
+                    <h2>{{order.product.categoryName}} doner, {{order.product.size}}cm</h2>
+                    <h3>From {{order.date}}</h3>
+                    <div class="toppings">
+                        {{#each order.product.toppings}}
+                        {{this}}<br>
+                        {{else}}
+                        <p>No toppings!</p>
+                        {{/each}}
+                    </div>
+                </div>
+                <div class="status">
+                    <div class="status-block">
+                        <span class="progress-right"></span>
+                        {{#if isPending}}
+                        <span class="checkpoint current"></span><br>
+                        {{else}}
+                        <span class="checkpoint"></span><br>
+                        {{/if}}
+                        Pending
+                    </div>
+                    <div class="status-block">
+                        <span class="progress-left"></span>
+                        <span class="progress-right"></span>
+                         {{#if isInProgress}}
+                        <span class="checkpoint current"></span><br>
+                        {{else}}
+                        <span class="checkpoint"></span><br>
+                        {{/if}}
+                        In progress
+                    </div>
+                    <div class="status-block">
+                        <span class="progress-left"></span>
+                        <span class="progress-right"></span>
+                         {{#if isInTransit}}
+                        <span class="checkpoint current"></span><br>
+                        {{else}}
+                        <span class="checkpoint"></span><br>
+                        {{/if}}
+                        In transit
+                    </div>
+                    <div class="status-block">
+                        <span class="progress-left"></span>
+                         {{#if isDelivered}}
+                        <span class="checkpoint current"></span><br>
+                        {{else}}
+                        <span class="checkpoint"></span><br>
+                        {{/if}}
+                        Delivered
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>Doner Place &copy; 2017</footer>
+    </div>
+</body>
+</html>

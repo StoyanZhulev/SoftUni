@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doner Place</title>
+    <link href="static/css/site.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <main>
+            <h1>Customize your order</h1>
+            <div class="catalog">
+                <div class="column">
+                    <img src="{{doner.imageUrl}}">
+                </div>
+                <div class="column">
+                    <h2>{{doner.categoryName}} doner, {{doner.size}}cm</h2>
+                    <h3>Toppings</h3>
+                    <div class="toppings">
+                        <form action="/order/{{doner._id}}" method="POST">
+                            <input name="productId" type="hidden" value="{{doner._id}}">
+                            {{#each doner.toppings}}
+                            <input name="{{this}}" type="checkbox" value="{{this}}"><label for="{{this}}">{{this}}</label><br>
+                            {{else}}
+                            <p>No toppings!</p>
+                            {{/each}}
+                            <input type="submit" value="Checkout" class="button" style="border:0" />
+                           
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>Doner Place &copy; 2017</footer>
+    </div>
+</body>
+</html>

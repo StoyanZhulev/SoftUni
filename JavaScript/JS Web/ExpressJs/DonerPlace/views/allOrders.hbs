@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doner Place</title>
+    <link href="static/css/site.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <main>
+            <h1>Manage orders</h1>
+            <div class="orders">
+				<form action="/allOrders" method="post">
+				{{#each orders}}
+					<div class="order">
+						<span class="order-time">{{this.date}}</span>
+						<span class="order-name">{{this.product.categoryName}} doner, {{this.product.size}} cm</span>
+						<span class="order-status">
+							<select name="{{this._id}}">
+								{{#if this.isPending}}
+								<option selected="true" value="Pending">Pending</option>
+								{{else}}
+								<option value="Pending">Pending</option>
+								{{/if}}
+								
+								{{#if this.isInProgress}}
+								<option selected="true" value="In Progress">In Progress</option>
+								{{else}}
+								<option value="In Progress">In Progress</option>
+								{{/if}}
+
+								{{#if this.isInTransit}}
+								<option selected="true" value="In Transit">In Transit</option>
+								{{else}}
+								<option value="In Transit">In Transit</option>
+								{{/if}}
+
+
+								{{#if this.isDelivered}}
+								<option selected="true" value="Delivered">Delivered</option>
+								{{else}}
+								<option value="Delivered">Delivered</option>
+								{{/if}}
+				
+							</select>
+						</span>
+						<a href="/order/details/{{this._id}}" class="button order-button">Details</a>
+					</div>
+					{{else}}
+					<p>No orders!</p>
+					{{/each}}
+					<input type="submit" value="Save Changes" class="button" style="border:0">
+				</form>
+            </div>
+        </main>
+        <footer>Doner Place &copy; 2017</footer>
+    </div>
+</body>
+</html>
