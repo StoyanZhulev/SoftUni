@@ -1,0 +1,18 @@
+<h1>Here are your memes</h1>
+<div class="container">
+    {{#each memes}}
+    <div class="meme">
+        <a href="/details?id={{this._id}}">
+            <img class="memePoster" src="/memeStorage/{{this._id}}.jpg">
+        </a>
+    </div>
+    {{else}}
+     <div class="meme">
+        <h1>No Memes to show!</h1>
+    </div>
+    {{/each}}
+</div>
+</a>
+  {{#if status}}
+    <div id="succesBox"><h2 id="successMsg">{{status}}</h2></div>
+    {{/if}}
